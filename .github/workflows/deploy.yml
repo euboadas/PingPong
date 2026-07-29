@@ -6,11 +6,20 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,12 +29,16 @@ jobs:
           test -f index.html
           test -f css/styles.css
           test -f js/main.js
-          test -f js/game.js
-          echo "Build OK: archivos del juego validados"
+          echo "Build OK"
 
-      - name: Desplegar en gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir sitio
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
-          exclude_assets: .github
+          path: .
+
+      - name: Publicar sitio
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -92,16 +92,19 @@ PingPong/
 
 ## Despliegue automático (GitHub Pages)
 
-Cada push a `main` ejecuta el workflow `.github/workflows/deploy.yml` y publica el juego en la rama `gh-pages`.
+Cada push a `main` ejecuta `.github/workflows/deploy.yml` y publica el juego en:
 
-### Configuración única (solo la primera vez)
+**https://euboadas.github.io/PingPong/**
 
-1. Ve a **Settings → Pages** en el repositorio.
-2. En **Build and deployment → Source**, elige **Deploy from a branch**.
-3. Selecciona la rama **`gh-pages`**, carpeta **`/ (root)`**, y guarda.
-4. Espera 1–2 minutos y abre: https://euboadas.github.io/PingPong/
+### Configuración obligatoria (solo la primera vez)
 
-Puedes ver el estado del despliegue en la pestaña **Actions** del repositorio.
+1. Abre https://github.com/euboadas/PingPong/settings/pages
+2. En **Build and deployment → Source**, selecciona **GitHub Actions** (no "Deploy from a branch")
+3. Guarda si aparece el botón **Save**
+4. Ve a **Actions**, abre el workflow **Build and Deploy to GitHub Pages** y verifica que termine en verde
+5. Espera 1–2 minutos y abre la URL pública
+
+> Si ves 404, casi siempre es porque el origen sigue en "Deploy from a branch" en lugar de **GitHub Actions**.
 
 ## Git — commit y push
 
