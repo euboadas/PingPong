@@ -2,6 +2,12 @@
 
 Juego web de ping pong con Canvas y JavaScript vanilla.
 
+## Jugar en línea
+
+**URL pública:** https://euboadas.github.io/PingPong/
+
+El despliegue es automático con GitHub Actions cada vez que se hace push a `main`.
+
 ## Características
 
 - Modo **1 jugador vs CPU**
@@ -20,7 +26,6 @@ Juego web de ping pong con Canvas y JavaScript vanilla.
 ```bash
 git clone https://github.com/euboadas/PingPong.git
 cd PingPong
-git checkout feature/pingpong-game
 ```
 
 No hay dependencias npm que instalar.
@@ -85,12 +90,19 @@ PingPong/
 4. Juega hasta llegar a 11 puntos.
 5. Pulsa `R` para reiniciar o `Esc` para volver al menú.
 
+## Despliegue automático (GitHub Pages)
+
+1. Ve a **Settings → Pages** en el repositorio.
+2. En **Build and deployment → Source**, selecciona **GitHub Actions**.
+3. Cada push a `main` ejecuta el workflow `.github/workflows/deploy.yml`.
+4. El juego queda publicado en https://euboadas.github.io/PingPong/
+
 ## Git — commit y push
 
 ```bash
 git add .
-git commit -m "feat: implementar juego de ping pong con modos CPU y multijugador"
-git push -u origin feature/pingpong-game
+git commit -m "tu mensaje"
+git push origin main
 ```
 
 ## Próximas mejoras sugeridas
